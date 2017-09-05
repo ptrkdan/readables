@@ -13,24 +13,30 @@ class AddPost extends Component {
     return (
       <div>
         <Header />
-        <div className="subheader">
-
+        <div className="add-post">
           <form onSubmit={this.handleSubmit} id='add-post-form'>
             <div className='add-post-detail'>
-              <input type='text' name='title' placeholder='Title' />
-              <input type='text' name='body' placeholder='Type post here.' />
-              <button>Post</button>
+              <ul>
+                <li>
+                  <h3>Title: <input id='add-post-detail-title' type='text' name='title' placeholder='Title' /></h3>
+                </li>
+                <li>
+                  <textarea id='add-post-detail-body' type='text' name='body' defaultValue='Type post here.' />
+                </li>
+                <li>
+                  Category: <select name='category' form='add-post-form'>
+                    <option value={1}>Category #1</option>
+                    <option value={2}>Category #2</option>
+                    <option value={3}>Category #3</option>
+                    <option value={4}>Category #4</option>
+                  </select>
+                </li>
+                <li>
+                  <button>Post</button>
+                </li>
+              </ul>
             </div>
           </form>
-
-          <span>Category:
-            <select name='category' form='add-post-form'>
-              <option value={1}>Category #1</option>
-              <option value={2}>Category #2</option>
-              <option value={3}>Category #3</option>
-              <option value={4}>Category #4</option>
-            </select>
-          </span>
 
         </div>
       </div>
