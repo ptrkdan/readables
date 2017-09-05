@@ -11,7 +11,7 @@ class App extends Component {
         <div className='container'>
           <Route exact path='/' component={CategoryList} />
           <Route exact path='/category/:categoryName' component={Category} />
-          <Route path='/category/:categoryName/addPost' component={AddPost} />
+          <Route path='/addPost' component={AddPost} />
         </div> 
       </div>
     );

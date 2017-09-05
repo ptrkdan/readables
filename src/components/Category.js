@@ -11,7 +11,7 @@ class Category extends Component {
         <Header category={category} />
         <div className='category-container container'>
           <div className='row justify-content-center'>
-            <Link to={`/category/${category}/addpost/`}>
+            <Link to='/addpost/'>
               <div className='add-post-btn btn col'>
                 +Post
               </div>
