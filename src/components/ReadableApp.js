@@ -1,42 +1,17 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
+import CategoryList from './CategoryList';
+import Category from './Category';
+import AddPost from './AddPost';
 
 class App extends Component {
   render() {
     return (
       <div className='app'>
         <div className='container'>
-          <div className='header row'>
-            <h1 className='col'>Readable</h1>
-          </div>
-          <ul className='category-list row'>
-            <li className='category col'>
-                <a href='#'>
-                  <div>Category-1</div>
-                </a>
-            </li>
-            <li className='category col'>
-                <a href='#'>
-                  <div>Category-2</div>
-                </a>
-            </li>
-            <div className='w-100'></div>
-            <li className='category col'>
-                <a href='#'>
-                  <div>Category-3</div>
-                </a>
-            </li>
-            <li className='category col'>
-                <a href='#'>
-                  <div>Category-4</div>
-                </a>
-            </li>
-            <div className='w-100'></div>
-            <li className='category col'>
-                <a href='#'>
-                  <div>Category-5</div>
-                </a>
-            </li>
-          </ul>
+          <Route exact path='/' component={CategoryList} />
+          <Route exact path='/category/:categoryName' component={Category} />
+          <Route path='/category/:categoryName/addPost' component={AddPost} />
         </div> 
       </div>
     );

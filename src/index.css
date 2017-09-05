@@ -9,7 +9,7 @@ html, body, .root {
 }
 
 a {
-  color: #C50000;
+  color: #000;
   text-decoration: none;
 }
 
@@ -18,17 +18,25 @@ a:hover {
   text-decoration: none;
 }
 
+a:visited {
+  color: #C50000;
+  text-decoration: none;  
+}
+
 .container {
   margin: 0 auto;
 }
 
 .header {
   margin-top: 100px;
+  margin-bottom: 20px;
   text-align: center;
   background-color: #CCC;
 }
 
 .header h1 {
+  color: #000;
+  text-decoration: none;
   padding: 20px;
   font-size: 64px;
 }
@@ -61,4 +69,9 @@ a:hover {
   height: inherit;
   font-size: 24px;
 
+}
+
+/* Category Page */
+.add-post-btn {
+  border: 1px solid #CCC;
 }
