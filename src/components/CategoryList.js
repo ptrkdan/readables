@@ -38,6 +38,23 @@ class CategoryList extends Component {
             </div>
           </Link>
         </div>
+        <div className='post-list'>
+          <div className='post'>
+            <div className='post-title'>I am a Post.</div>
+            <div className='post-body'>I post, therefore I am.</div>
+            <div className='post-author'>- Poster</div>
+          </div>
+          <div className='post'>
+            <div className='post-title'>I am a Post.</div>
+            <div className='post-body'>I post, therefore I am.</div>
+            <div className='post-author'>- Poster</div>
+          </div>
+          <div className='post'>
+            <div className='post-title'>I am a Post.</div>
+            <div className='post-body'>I post, therefore I am.</div>
+            <div className='post-author'>- Poster</div>
+          </div>
+        </div>
       </div>
     );
   }
