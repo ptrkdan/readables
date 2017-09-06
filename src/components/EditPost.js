@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class EditPost extend Component {
+class EditPost extends Component {
 
   render() {
     return (

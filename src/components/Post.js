@@ -25,9 +25,10 @@ class Post extends Component {
           <div className='post-body col'>I post, therefore I am.</div>
         </div>
         <div className='row justify-content-between'>
-          <div className='col'>
+          <div className='col align-self-center'>
             <span className='timestamp post-timestamp'>17/09/06 09:15</span>
             <span className='author post-author'>by Poster</span>
+            <span className='edit-link'> (<Link to='/editPost/1'>Edit</Link>)</span>
           </div>
           <div className='col-3'>
             <span className='btn vote-minus-btn'>-</span>

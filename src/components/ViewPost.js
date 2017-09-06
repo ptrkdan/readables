@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Header from './Header';
 import Post from './Post';
+import Comment from './Comment';
 
 class ViewPost extends Component {
 
@@ -17,10 +18,7 @@ class ViewPost extends Component {
               <div className='add-comment-btn btn col-3'>+Comment</div>
             </Link>
           </div>
-          <div className='comment row'>
-            <div className='comment-body col-12'>I concur.</div>
-            <div className='author comment-author'>- Commenter</div>
-          </div>
+          <Comment />
         </div>
       </div>
     )

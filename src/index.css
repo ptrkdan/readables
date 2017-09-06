@@ -85,6 +85,11 @@ hr {
   font-size: 14px;
 }
 
+.edit-link a {
+  font-size: 12px;
+  text-decoration: underline;
+}
+
 .vote-count {
   padding: .5rem 1rem;
   font-size: 1rem;
@@ -120,7 +125,7 @@ hr {
 .comment {
   margin: 0 0 10px 40px;
   border: 1px solid #CCC;
-  padding: 5px 20px;
+  padding: 10px 20px;
   background-color: #FFF;
 }
 
