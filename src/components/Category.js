@@ -18,21 +18,46 @@ class Category extends Component {
             </Link>
           </div>
           <div className='post-list'>
-            <div className='post'>
-              <div className='post-title'>I am a Post.</div>
-              <div className='post-body'>I post, therefore I am.</div>
-              <div className='post-author'>- Poster</div>
-            </div>
-            <div className='post'>
-              <div className='post-title'>I am a Post.</div>
-              <div className='post-body'>I post, therefore I am.</div>
-              <div className='post-author'>- Poster</div>
-            </div>
-            <div className='post'>
-              <div className='post-title'>I am a Post.</div>
-              <div className='post-body'>I post, therefore I am.</div>
-              <div className='post-author'>- Poster</div>
-            </div>
+            <Link to='/viewPost/1'>
+              <div className='post'>
+              <div className='post-category'>>> Category-1</div>
+                <div className='post-title'>I am a Post.</div>
+                <div className='post-body'>I post, therefore I am.</div>
+                <div className='post-author'>- Poster</div>
+              </div>
+            </Link>
+            <Link to='/viewPost/1'>
+              <div className='post'>
+              <div className='post-category'>>> Category-1</div>
+                <div className='post-title'>I am a Post.</div>
+                <div className='post-body'>I post, therefore I am.</div>
+                <div className='post-author'>- Poster</div>
+              </div>
+            </Link>
+            <Link to='/viewPost/1'>
+              <div className='post'>
+              <div className='post-category'>>> Category-1</div>
+                <div className='post-title'>I am a Post.</div>
+                <div className='post-body'>I post, therefore I am.</div>
+                <div className='post-author'>- Poster</div>
+              </div>
+            </Link>
+            <Link to='/viewPost/1'>
+              <div className='post'>
+              <div className='post-category'>>> Category-1</div>
+                <div className='post-title'>I am a Post.</div>
+                <div className='post-body'>I post, therefore I am.</div>
+                <div className='post-author'>- Poster</div>
+              </div>
+            </Link>
+            <Link to='/viewPost/1'>
+              <div className='post'>
+              <div className='post-category'>>> Category-1</div>
+                <div className='post-title'>I am a Post.</div>
+                <div className='post-body'>I post, therefore I am.</div>
+                <div className='post-author'>- Poster</div>
+              </div>
+            </Link>
           </div>
         </div>
       </div>
