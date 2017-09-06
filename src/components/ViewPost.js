@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Header from './Header';
+import Post from './Post';
 
 class ViewPost extends Component {
 
@@ -9,12 +10,7 @@ class ViewPost extends Component {
     return (
       <div>
         <Header category={category} />
-        <div className='post'>
-          <div className='post-category'>>> <Link to={ '/category/'+category }>Category-1</Link></div>
-          <div className='post-title'>I am a Post.</div>
-          <div className='post-body'>I post, therefore I am.</div>
-          <div className='author post-author'>- Poster</div>
-        </div>
+        <Post category={category} />
         <div className='comment-list'>
           <div className='row'>
             <Link to='/addcomment/'>

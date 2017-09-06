@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Header from './Header';
+import Post from './Post';
 
 class Category extends Component {
 
@@ -18,46 +19,11 @@ class Category extends Component {
             </Link>
           </div>
           <div className='post-list'>
-            <Link to='/viewPost/1'>
-              <div className='post'>
-              <div className='post-category'>>> Category-1</div>
-                <div className='post-title'>I am a Post.</div>
-                <div className='post-body'>I post, therefore I am.</div>
-                <div className='post-author'>- Poster</div>
-              </div>
-            </Link>
-            <Link to='/viewPost/1'>
-              <div className='post'>
-              <div className='post-category'>>> Category-1</div>
-                <div className='post-title'>I am a Post.</div>
-                <div className='post-body'>I post, therefore I am.</div>
-                <div className='post-author'>- Poster</div>
-              </div>
-            </Link>
-            <Link to='/viewPost/1'>
-              <div className='post'>
-              <div className='post-category'>>> Category-1</div>
-                <div className='post-title'>I am a Post.</div>
-                <div className='post-body'>I post, therefore I am.</div>
-                <div className='post-author'>- Poster</div>
-              </div>
-            </Link>
-            <Link to='/viewPost/1'>
-              <div className='post'>
-              <div className='post-category'>>> Category-1</div>
-                <div className='post-title'>I am a Post.</div>
-                <div className='post-body'>I post, therefore I am.</div>
-                <div className='post-author'>- Poster</div>
-              </div>
-            </Link>
-            <Link to='/viewPost/1'>
-              <div className='post'>
-              <div className='post-category'>>> Category-1</div>
-                <div className='post-title'>I am a Post.</div>
-                <div className='post-body'>I post, therefore I am.</div>
-                <div className='post-author'>- Poster</div>
-              </div>
-            </Link>
+            <Post category={category} />
+            <Post category={category} />
+            <Post category={category} />
+            <Post category={category} />
+            <Post category={category} />
           </div>
         </div>
       </div>
