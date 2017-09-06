@@ -31,7 +31,7 @@ class Post extends Component {
           </div>
           <div className='col-3'>
             <span className='btn vote-minus-btn'>-</span>
-            <span className='btn vote-count post-vote-count'> 2 </span>
+            <span className='vote-count post-vote-count'> 2 </span>
             <span className='btn vote-plus-btn'>+</span>
           </div>
         </div>

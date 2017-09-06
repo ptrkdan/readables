@@ -14,7 +14,7 @@ class Header extends Component {
               Readable
             </Link>
             { category ? (
-               <span> :: <Link to={`/category/${category}`}>{category}</Link></span>
+               <span style={{color: '#465D6F'}}> :: {category}</span>
             ) : null }
           </h1>
         </div>
