@@ -8,7 +8,12 @@ class Post extends Component {
     return (
       <div className='post'>
         <div className='row'>
-          <div className='post-category col'>>> <Link to={ '/category/' + category }>{category}</Link></div>
+          { category ? (
+              <div className='post-category col'>
+                >> <Link to={ '/category/' + category }>{category}</Link>
+              </div>
+              ) : null
+          }
         </div>
         <div className='row justify-content-between'>
           <div className='post-title col-6'>
