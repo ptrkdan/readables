@@ -23,6 +23,11 @@ a:visited {
   text-decoration: none;  
 }
 
+.btn {
+  border: 1px solid #CCC;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
 .container {
   margin: 0 auto;
 }
@@ -68,6 +73,12 @@ a:visited {
 
 }
 
+.author {
+  padding-left: 20px;
+  font-style: italic;
+  font-size: 18px;
+}
+
 .post-list {
   margin-top: 20px;
 }
@@ -78,6 +89,10 @@ a:visited {
   margin-bottom: 20px;
 }
 
+.post-category {
+  font-size: 12px;
+}
+
 .post-title {
   font-size: 42px;
 }
@@ -86,20 +101,20 @@ a:visited {
   font-size: 16px;
 }
 
-.post-author {
-  padding-left: 20px;
-  font-style: italic;
-  font-size: 18px;
-}
-
-
-/* Category Page */
-.add-post-btn {
+.comment {
+  margin: 0 0 10px 40px;
   border: 1px solid #CCC;
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  padding: 5px 20px;
 }
+
+.add-comment-btn {
+  min-width: 150px;
+  margin: 0 0 20px 55px;
+}
+
 
 /*Add Post Page*/
+
 .add-post {
   border: 1px solid #CCC;
 }
