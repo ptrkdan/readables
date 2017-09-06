@@ -18,7 +18,10 @@ class AddPost extends Component {
             <div className='add-post-detail'>
               <ul>
                 <li>
-                  <h3>Title: <input id='add-post-detail-title' type='text' name='title' placeholder='Title' /></h3>
+                  <h3>Title: <input id='add-post-detail-title' type='text' name='title' /></h3>
+                </li>
+                <li>
+                  <span><h4>Author: <input id='add-post-detail-author' type='text' name='author' /></h4></span>
                 </li>
                 <li>
                   <textarea id='add-post-detail-body' type='text' name='body' defaultValue='Type post here.' />
