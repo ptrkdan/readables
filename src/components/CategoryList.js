@@ -32,12 +32,13 @@ class CategoryList extends Component {
               </Link>
           </li>
         </ul>
-        <div className='row justify-content-center'>
+        <div className='row justify-content-between'>
           <Link to='/addpost/'>
-            <div className='add-post-btn btn col'>
-              +Post
-            </div>
+            <div className='add-post-btn btn col'>+Post</div>
           </Link>
+          <div className='sort-control-btn btn col-2'>
+            Sort
+          </div>
         </div>
         <div className='post-list'>
           <Post />

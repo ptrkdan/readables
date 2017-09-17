@@ -12,15 +12,18 @@ class ViewPost extends Component {
       <div>
         <Header category={category} />
         <Post category={category} />
-        <div className='comment-list'>
-          <div className='row'>
+        <div className='comments-list'>
+          <div className='row justify-content-between'>
             <Link to='/addcomment/'>
-              <div className='add-comment-btn btn col-3'>+Comment</div>
+              <div className='add-comment-btn btn col'>+Comment</div>
             </Link>
+            <div className='sort-control-btn btn col-1'>Sort</div>
           </div>
+          <Comment />
           <Comment />
         </div>
       </div>
+
     )
   }
 }
