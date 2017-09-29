@@ -56,12 +56,11 @@ class AddPost extends Component {
                     </select>
                   </li>
                   <li>
-                    <button>Post</button>
+                    <button className='btn'>Post</button>
                   </li>
                 </ul>
               </div>
             </form>
-
           </div>
         </div>
       );

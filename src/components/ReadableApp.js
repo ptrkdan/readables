@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { populateCategories, populatePosts } from '../actions';
-import { fetchCategories, fetchPosts, addPost } from '../utils/ReadableAPI';
+import { fetchCategories, fetchPosts, addPost,editPost } from '../utils/ReadableAPI';
 import MainView from './MainView';
 import CategoryView from './CategoryView';
 import AddPost from './AddPost';
@@ -27,6 +27,13 @@ class App extends Component {
       .then( posts => populatePosts(posts) );
   };
 
+  editPost = (data) => {
+    const { populatePosts } = this.props;
+    editPost(data);
+    fetchPosts()
+      .then( posts => populatePosts(posts) );
+  }
+
   render() {
     return (
       <div className='app'>
@@ -37,7 +44,9 @@ class App extends Component {
             <Route path='/addPost' render={ 
               (props) => <AddPost addPost={this.addPost} {...props} />
             } />
-            <Route path='/editPost/:postId' component={EditPost} />
+            <Route path='/editPost/:postId' render={
+              (props) => <EditPost editPost={this.editPost} {...props} />
+            } />
             <Route path='/viewPost/:postId' component={PostView} />
             <Route path='/addComment' component={AddComment} />
           </Switch>

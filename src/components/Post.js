@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { deletePost } from '../utils/ReadableAPI';
 import { removePost } from '../actions';
-import { Link } from 'react-router-dom';
 
 class Post extends Component {
 
@@ -24,19 +24,19 @@ class Post extends Component {
           </div>
         </div>
         <div className='row justify-content-between'>
-          <div className='post-title col-6'>
+          <div className='post-title col'>
             <Link to={`/viewPost/${post.id}`}>{post.title}</Link>
           </div>
         </div>
-        <hr />
         <div className='row'>
           <div className='post-body col'>{post.body}</div>
         </div>
+        <hr />
         <div className='row justify-content-between'>
           <div className='col align-self-center'>
             <span className='timestamp post-timestamp'>{timestamp.toLocaleString()}</span>
             <span className='author post-author'>by {post.author}</span>
-            <span className='edit-link link'> (<span>Edit</span>)</span>
+            <span className='edit-link link'> (<Link to={`/editPost/${post.id}`}>Edit</Link>)</span>
             <span className='delete-link link'> (<span onClick={this.deletePost} id={post.id}>Delete</span>)</span>
           </div>
           <div className='col-3'>

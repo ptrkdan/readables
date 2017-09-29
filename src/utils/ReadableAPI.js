@@ -51,6 +51,24 @@ export const addPost = (postData) => {
   .then( res => res.json() );
 }
 
+export const editPost = (postData) => {
+  const data = {
+    ...postData,
+    timestamp: Date.now()
+  };
+  fetch(`${READABLE_SERVER_URL}/posts/${postData.id}`,
+    {
+      method: 'PUT',
+      headers: {
+        ...headers,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    }
+  )
+  .then( res => res.json() );
+}
+
 export const deletePost = (postId) =>
 fetch(`${READABLE_SERVER_URL}/posts/${postId}`, 
   {
