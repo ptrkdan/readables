@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import Header from './Header';
-import serializeForm from 'form-serialize';
+// import serializeForm from 'form-serialize';
 
 class AddPost extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const value = serializeForm(event.target, {hash: true});
+    // const value = serializeForm(event.target, {hash: true});
   }
 
   render() {

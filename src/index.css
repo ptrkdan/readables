@@ -93,9 +93,10 @@ hr {
   font-size: 14px;
 }
 
-.edit-link a {
+.link span {
   font-size: 12px;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .vote-count {

@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Header from './Header';
+import CategoryList from './CategoryList';
 import Post from './Post';
 
-class Category extends Component {
+class CategoryView extends Component {
 
   render() {
     const category = this.props.match.params.categoryName;
+    const { posts } = this.props;
+
     return (
       <div className='category-page'>
         <Header category={category} />
+        <CategoryList />
         <div className='category-container container'>
           <div className='row justify-content-between'>
             <Link to='/addpost/'>
@@ -22,11 +27,13 @@ class Category extends Component {
             </div>
           </div>
           <div className='post-list'>
-            <Post category={category} />
-            <Post category={category} />
-            <Post category={category} />
-            <Post category={category} />
-            <Post category={category} />
+            {
+              posts.length > 0 && (
+                posts.map( post => 
+                  <Post key={post.id} post={post} />
+                )
+              )
+            }
           </div>
         </div>
       </div>
@@ -34,4 +41,11 @@ class Category extends Component {
   }
 }
 
-export default Category;
+function mapStateToProps({ posts }, ownProps) {
+  const category = ownProps.match.params.categoryName;
+  return { 
+    posts: posts.filter( post => post.category === category )
+  };
+}
+
+export default connect(mapStateToProps)(CategoryView);
