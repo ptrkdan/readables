@@ -10,7 +10,7 @@ class CategoryList extends Component {
     return (
       <ul className='category-list row justify-content-between'>
         {
-          categories.length && (
+          categories.length > 0 && (
             categories.map( category => 
               <li key={category.name} className='category col-3'>
                 <Link to={`/category/${category.path}`}>

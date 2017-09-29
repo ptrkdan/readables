@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { populateCategories, populatePosts } from '../actions';
-import { fetchCategories, fetchPosts } from '../utils/ReadableAPI';
+import { fetchCategories, fetchPosts, addPost, deletePost } from '../utils/ReadableAPI';
 import MainView from './MainView';
 import CategoryView from './CategoryView';
 import AddPost from './AddPost';
@@ -20,6 +20,25 @@ class App extends Component {
       .then( posts => populatePosts(posts) );
   }
 
+  addPost = (data) => {
+    const { populatePosts } = this.props;
+    addPost(data);
+    fetchPosts()
+      .then( posts => populatePosts(posts) );
+  };
+
+  deletePost = (postId) => {
+    const { populatePosts } = this.props;
+    deletePost(postId)
+      .then( fetchPosts()
+        .then( posts => populatePosts(posts) )
+      );
+  };
+
+  addPostView = (props) => {
+    return <AddPost addPost={this.addPost}  {...props} />
+  };
+
   render() {
     return (
       <div className='app'>
@@ -27,7 +46,7 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={MainView} />
             <Route exact path='/category/:categoryName' component={CategoryView} />
-            <Route path='/addPost' component={AddPost} />
+            <Route path='/addPost' render={this.addPostView} />
             <Route path='/editPost/:postId' component={EditPost} />
             <Route path='/viewPost/:postId' component={PostView} />
             <Route path='/addComment' component={AddComment} />
@@ -45,7 +64,7 @@ function mapStateToProps({ categories, posts, comments }) {
 function mapDispatchToProps(dispatch) {
   return {
     populateCategories: (categories) => dispatch(populateCategories(categories)),
-    populatePosts: (posts) => dispatch(populatePosts(posts))
+    populatePosts: (posts) => dispatch(populatePosts(posts)),
   };
 }
 
