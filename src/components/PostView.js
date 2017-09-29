@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchComments } from '../utils/ReadableAPI';
 import { populateComments } from '../actions';
@@ -42,9 +42,9 @@ class ViewPost extends Component {
           </div>
         </div>
       )
+    } else {
+      return <Redirect push to='/' />;
     }
-
-    return <div></div>;
   }
 }
 

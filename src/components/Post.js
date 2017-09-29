@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { deletePost } from '../utils/ReadableAPI';
+import { removePost } from '../actions';
 import { Link } from 'react-router-dom';
 
 class Post extends Component {
+
+  deletePost = (e) => {
+    const { removePost } = this.props;
+    const postId = e.target.id;
+    deletePost(postId)
+      .then(removePost(postId));
+  };
 
   render() {
     const { post } = this.props;
@@ -40,4 +50,14 @@ class Post extends Component {
   }
 }
 
-export default Post;
+function mapStateToProps({ posts }) {
+  return { posts };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    removePost: (posts) => dispatch(removePost(posts))
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Post);

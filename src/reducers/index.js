@@ -13,7 +13,9 @@ function categories(state = [], action) {
 function posts(state = [], action) {
   switch(action.type) {
     case actions.POPULATE_POSTS:
-      return action.posts;
+      return action.posts.filter( post => !post.deleted );
+    case actions.REMOVE_POST:
+      return state.filter( post => post.id !== action.postId);
     default:
       return state;    
   }
