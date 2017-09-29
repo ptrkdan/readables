@@ -27,7 +27,7 @@ class EditPost extends Component {
     const { posts } = this.props;
 
     if (this.state.submitSuccess) {
-      return <Redirect push to="/" />
+      return <Redirect push to={`/viewPost/${posts[0].id}`} />
     } 
     else if (posts[0]) {
       const post = posts[0];
