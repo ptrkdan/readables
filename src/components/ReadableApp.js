@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { populateCategories, populatePosts } from '../actions';
-import { fetchCategories, fetchPosts, addPost,editPost } from '../utils/ReadableAPI';
+import { populateCategories,
+         populatePosts,
+         updatePost
+       } from '../actions';
+import { fetchCategories, 
+         fetchPosts,
+         fetchPost,
+         addPost, 
+         editPost, 
+         updatePostVoteCount
+       } from '../utils/ReadableAPI';
 import MainView from './MainView';
 import CategoryView from './CategoryView';
 import AddPost from './AddPost';
@@ -12,34 +21,53 @@ import AddComment from './AddComment';
 
 class App extends Component {
 
+  fetchCategories = (populateCategoriesFunc) => {
+    fetchCategories()
+      .then( categories => populateCategoriesFunc(categories) );
+  };
+
+  fetchPosts = (populatePostsFunc) => {
+    fetchPosts()
+      .then( posts => populatePostsFunc(posts) );
+  };
+
+  fetchPost = (updatePostFunc, postId) => {
+    fetchPost(postId)
+      .then( post => updatePostFunc(post));
+  };
+
   componentDidMount() {
     const { populateCategories, populatePosts } = this.props;
-    fetchCategories()
-      .then( categories => populateCategories(categories) );
-    fetchPosts()
-      .then( posts => populatePosts(posts) );
+    this.fetchCategories(populateCategories);
+    this.fetchPosts(populatePosts);
   }
 
   addPost = (data) => {
     const { populatePosts } = this.props;
     addPost(data);
-    fetchPosts()
-      .then( posts => populatePosts(posts) );
+    this.fetchPosts(populatePosts);
   };
 
   editPost = (data) => {
     const { populatePosts } = this.props;
     editPost(data);
-    fetchPosts()
-      .then( posts => populatePosts(posts) );
-  }
+    this.fetchPosts(populatePosts);
+  };
+
+  updatePostVoteCount = (id, vote) => {
+    const { updatePost } = this.props;
+    updatePostVoteCount(id, vote);
+    this.fetchPost(updatePost, id);
+  };
 
   render() {
     return (
       <div className='app'>
         <div className='container'>
           <Switch>
-            <Route exact path='/' component={MainView} />
+            <Route exact path='/' render={
+              (props) => <MainView updatePostVoteCount={this.updatePostVoteCount} {...props} />
+            } />
             <Route exact path='/category/:categoryName' component={CategoryView} />
             <Route path='/addPost' render={ 
               (props) => <AddPost addPost={this.addPost} {...props} />
@@ -64,6 +92,7 @@ function mapDispatchToProps(dispatch) {
   return {
     populateCategories: (categories) => dispatch(populateCategories(categories)),
     populatePosts: (posts) => dispatch(populatePosts(posts)),
+    updatePost: (post) => dispatch(updatePost(post))
   };
 }
 

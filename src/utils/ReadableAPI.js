@@ -77,6 +77,22 @@ fetch(`${READABLE_SERVER_URL}/posts/${postId}`,
   })
   .then( res => res );
 
+export const updatePostVoteCount = (postId, option) => {
+  const data = { option };
+
+  fetch(`${READABLE_SERVER_URL}/posts/${postId}`,
+    {
+      method: 'POST',
+      headers: {
+        ...headers,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    }
+  )
+  .then( res => res );
+}
+
 export const fetchComments = (postId) =>
 fetch(`${READABLE_SERVER_URL}/posts/${postId}/comments`, { headers })
   .then( res => res.json() )

@@ -8,7 +8,7 @@ import Post from './Post';
 class MainView extends Component {
 
   render() {
-    const { posts } = this.props;
+    const { posts, updatePostVoteCount } = this.props;
     return (
       <div>
         <Header />
@@ -25,7 +25,7 @@ class MainView extends Component {
         {
           posts.length > 0 && (
             posts.map( post => 
-              <Post key={post.id} post={post} />
+              <Post key={post.id} post={post} updatePostVoteCount={updatePostVoteCount}/>
             )
           )
         }

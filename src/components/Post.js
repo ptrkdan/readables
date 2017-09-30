@@ -13,6 +13,10 @@ class Post extends Component {
       .then(removePost(postId));
   };
 
+  updatePostVoteCount = (postId, option) => {
+    this.props.updatePostVoteCount(postId, option);
+  }
+
   render() {
     const { post } = this.props;
     const timestamp = new Date(post.timestamp);
@@ -40,9 +44,9 @@ class Post extends Component {
             <span className='delete-link link'> (<span onClick={this.deletePost} id={post.id}>Delete</span>)</span>
           </div>
           <div className='col-3'>
-            <span className='btn vote-minus-btn'>-</span>
+            <span className='btn vote-minus-btn' onClick={() => this.updatePostVoteCount(post.id, 'downVote')}>-</span>
             <span className='vote-count post-vote-count'> {post.voteScore} </span>
-            <span className='btn vote-plus-btn'>+</span>
+            <span className='btn vote-plus-btn' onClick={() => this.updatePostVoteCount(post.id, 'upVote')}>+</span>
           </div>
         </div>
       </div>
