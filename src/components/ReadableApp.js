@@ -92,8 +92,7 @@ class App extends Component {
 function mapStateToProps({ categories, posts, sort }) {
   return { 
     categories, 
-    posts: posts.sort((a,b) => comparePosts(a, b, sort, true)),
-    sort
+    posts: posts.sort((a,b) => comparePosts(a, b, sort))
   };
 }
 

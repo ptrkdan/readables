@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Header from './Header';
 import CategoryList from './CategoryList';
+import SortControl from './SortControl';
 import Post from './Post';
 
 class CategoryView extends Component {
@@ -22,9 +23,7 @@ class CategoryView extends Component {
                 +Post
               </div>
             </Link>
-            <div className='sort-control-btn btn col-2'>
-              Sort
-            </div>
+            <SortControl />
           </div>
           <div className='post-list'>
             {
