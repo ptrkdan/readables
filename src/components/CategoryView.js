@@ -9,7 +9,7 @@ class CategoryView extends Component {
 
   render() {
     const category = this.props.match.params.categoryName;
-    const { posts } = this.props;
+    const { posts, updatePostVoteCount } = this.props;
 
     return (
       <div className='category-page'>
@@ -30,7 +30,7 @@ class CategoryView extends Component {
             {
               posts.length > 0 && (
                 posts.map( post => 
-                  <Post key={post.id} post={post} />
+                  <Post key={post.id} post={post} updatePostVoteCount={updatePostVoteCount} />
                 )
               )
             }

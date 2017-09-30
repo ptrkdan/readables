@@ -16,7 +16,7 @@ class ViewPost extends Component {
   }
 
   render() {
-    const { posts, comments } = this.props;
+    const { posts, comments, updatePostVoteCount } = this.props;
 
     if (posts[0]) {
       const post = posts[0];
@@ -24,7 +24,7 @@ class ViewPost extends Component {
         <div>
           <Header category={post.category} />
           <CategoryList />
-          <Post key={post.id} post={post} />
+          <Post key={post.id} post={post} updatePostVoteCount={updatePostVoteCount} />
           <div className='comments-list'>
             <div className='row justify-content-between'>
               <Link to='/addcomment/'>

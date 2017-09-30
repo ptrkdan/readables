@@ -12,7 +12,7 @@ import { fetchCategories,
          editPost, 
          updatePostVoteCount
        } from '../utils/ReadableAPI';
-import { compareVoteScore } from '../utils/compareUtils';
+import { comparePosts } from '../utils/compareUtils';
 import MainView from './MainView';
 import CategoryView from './CategoryView';
 import AddPost from './AddPost';
@@ -69,14 +69,18 @@ class App extends Component {
             <Route exact path='/' render={
               (props) => <MainView updatePostVoteCount={this.updatePostVoteCount} {...props} />
             } />
-            <Route exact path='/category/:categoryName' component={CategoryView} />
+            <Route exact path='/category/:categoryName' render={
+              (props) => <CategoryView updatePostVoteCount={this.updatePostVoteCount} {...props} />
+            } />
             <Route path='/addPost' render={ 
               (props) => <AddPost addPost={this.addPost} {...props} />
             } />
             <Route path='/editPost/:postId' render={
               (props) => <EditPost editPost={this.editPost} {...props} />
             } />
-            <Route path='/viewPost/:postId' component={PostView} />
+            <Route path='/viewPost/:postId' render={
+              (props) => <PostView updatePostVoteCount={this.updatePostVoteCount}  {...props} />
+            } />
             <Route path='/addComment' component={AddComment} />
           </Switch>
         </div> 
@@ -85,10 +89,11 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ categories, posts }) {
+function mapStateToProps({ categories, posts, sort }) {
   return { 
     categories, 
-    posts: posts.sort((a,b) => compareVoteScore(a, b, true))
+    posts: posts.sort((a,b) => comparePosts(a, b, sort, true)),
+    sort
   };
 }
 

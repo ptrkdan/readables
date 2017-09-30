@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux';
 import * as actions from '../actions';
+import { SET_SORT_METHOD } from '../actions/sort';
+import { SORT_BY_VOTESCORE } from '../utils/compareUtils';
 
 function categories(state = [], action) {
   switch(action.type) {
@@ -33,4 +35,13 @@ function comments(state = [], action) {
   }
 }
 
-export default combineReducers({ categories, posts, comments });
+function sort(state = SORT_BY_VOTESCORE, action) {
+  switch(action.type) {
+    case SET_SORT_METHOD:
+      return action.sortMethod;
+    default:
+      return state;
+  }
+}
+
+export default combineReducers({ categories, posts, comments, sort });

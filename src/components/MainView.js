@@ -25,7 +25,7 @@ class MainView extends Component {
         {
           posts.length > 0 && (
             posts.map( post => 
-              <Post key={post.id} post={post} updatePostVoteCount={updatePostVoteCount}/>
+              <Post key={post.id} post={post} updatePostVoteCount={updatePostVoteCount} />
             )
           )
         }
