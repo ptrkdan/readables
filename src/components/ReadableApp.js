@@ -12,6 +12,7 @@ import { fetchCategories,
          editPost, 
          updatePostVoteCount
        } from '../utils/ReadableAPI';
+import { compareVoteScore } from '../utils/compareUtils';
 import MainView from './MainView';
 import CategoryView from './CategoryView';
 import AddPost from './AddPost';
@@ -84,8 +85,11 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ categories, posts, comments }) {
-  return { categories, posts, comments };
+function mapStateToProps({ categories, posts }) {
+  return { 
+    categories, 
+    posts: posts.sort((a,b) => compareVoteScore(a, b, true))
+  };
 }
 
 function mapDispatchToProps(dispatch) {
