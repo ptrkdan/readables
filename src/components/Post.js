@@ -40,7 +40,7 @@ class Post extends Component {
           <div className='col align-self-center'>
             <span className='timestamp post-timestamp'>{timestamp.toLocaleString()}</span>
             <span className='author post-author'>by {post.author}</span>
-            <span className='edit-link link'> (<Link to={`/editPost/${post.id}`}>Edit</Link>)</span>
+            <span className='edit-link link'> (<span><Link to={`/editPost/${post.id}`}>Edit</Link></span>)</span>
             <span className='delete-link link'> (<span onClick={this.deletePost} id={post.id}>Delete</span>)</span>
           </div>
           <div className='col-3'>

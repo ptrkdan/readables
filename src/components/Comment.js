@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { deleteComment } from '../utils/ReadableAPI';
 import { removeComment } from '../actions';
@@ -26,7 +27,7 @@ class Comment extends Component {
           <div className='col align-self-center'>
             <span className='timestamp comment-timestamp'>{timestamp.toLocaleString()}</span>
             <span className='author comment-author'>by {comment.author}</span>
-            <span className='edit-link link'> (<span>Edit</span>)</span>
+            <span className='edit-link link'> (<span><Link to={`/editComment/${comment.id}`}>Edit</Link></span>)</span>
             <span className='delete-link link'> (<span onClick={this.deleteComment} id={comment.id}>Delete</span>)</span>
           </div>
           <div className='col-3'>

@@ -11,7 +11,8 @@ import { fetchCategories,
          addPost, 
          editPost, 
          updatePostVoteCount,
-         addComment
+         addComment,
+         editComment
        } from '../utils/ReadableAPI';
 import { comparePosts } from '../utils/compareUtils';
 import MainView from './MainView';
@@ -20,6 +21,7 @@ import AddPost from './AddPost';
 import EditPost from './EditPost';
 import PostView from './PostView';
 import AddComment from './AddComment';
+import EditComment from './EditComment';
 
 class App extends Component {
 
@@ -66,6 +68,10 @@ class App extends Component {
     addComment(data);
   }
 
+  editComment = (data) => {
+    editComment(data);
+  }
+
   render() {
     return (
       <div className='app'>
@@ -88,6 +94,9 @@ class App extends Component {
             } />
             <Route path='/addComment/:postId'  render={
               (props) => <AddComment addComment={this.addComment} {...props} />
+            } />
+            <Route path='/editComment/:commentId' render={
+              (props) => <EditComment editComment={this.editComment} {...props} />
             } />
           </Switch>
         </div> 

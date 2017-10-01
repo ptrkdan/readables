@@ -117,6 +117,24 @@ export const addComment = (commentData) => {
   .then( res => res.json() );
 }
 
+export const editComment = (commentData) => {
+  const data = {
+    ...commentData,
+    timestamp: Date.now()
+  };
+  fetch(`${READABLE_SERVER_URL}/comments/${commentData.id}`,
+    {
+      method: 'PUT',
+      headers: {
+        ...headers,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    }
+  )
+  .then( res => res.json() );
+}
+
 export const deleteComment = (commentId) =>
 fetch(`${READABLE_SERVER_URL}/comments/${commentId}`, 
   {
