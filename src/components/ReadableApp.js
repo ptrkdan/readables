@@ -17,7 +17,7 @@ import { fetchCategories,
          editComment,
          updateCommentVoteCount
        } from '../utils/ReadableAPI';
-import { comparePosts } from '../utils/compareUtils';
+import { comparePosts, compareComments } from '../utils/compareUtils';
 import MainView from './MainView';
 import CategoryView from './CategoryView';
 import AddPost from './AddPost';
@@ -126,7 +126,7 @@ function mapStateToProps({ categories, posts, comments, sort }) {
   return { 
     categories, 
     posts: posts.sort((a,b) => comparePosts(a, b, sort)),
-    comments
+    comments: comments.sort((a,b) => compareComments(a, b, sort))
   };
 }
 
