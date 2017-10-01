@@ -1,9 +1,27 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import Header from './Header';
+import serializeForm from 'form-serialize';
 
 class AddComment extends Component {
 
+  state = {
+    submitSuccess: false
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const data = serializeForm(event.target, {hash: true});
+    this.props.addComment(data);
+    this.setState({ submitSuccess: true });
+  };
+
   render() {
+    const { postId } = this.props.match.params;
+
+    if (this.state.submitSuccess) {
+      return <Redirect push to={`/viewPost/${postId}`} />
+    }
     return (
       <div>
         <Header />
@@ -22,6 +40,7 @@ class AddComment extends Component {
                 </li>
               </ul>
             </div>
+            <input hidden readOnly name='parentId' value={postId} />
           </form>
 
         </div>

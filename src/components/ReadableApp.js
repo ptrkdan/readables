@@ -10,7 +10,8 @@ import { fetchCategories,
          fetchPost,
          addPost, 
          editPost, 
-         updatePostVoteCount
+         updatePostVoteCount,
+         addComment
        } from '../utils/ReadableAPI';
 import { comparePosts } from '../utils/compareUtils';
 import MainView from './MainView';
@@ -61,6 +62,10 @@ class App extends Component {
     this.fetchPost(updatePost, id);
   };
 
+  addComment = (data) => {
+    addComment(data);
+  }
+
   render() {
     return (
       <div className='app'>
@@ -81,7 +86,9 @@ class App extends Component {
             <Route path='/viewPost/:postId' render={
               (props) => <PostView updatePostVoteCount={this.updatePostVoteCount}  {...props} />
             } />
-            <Route path='/addComment' component={AddComment} />
+            <Route path='/addComment/:postId'  render={
+              (props) => <AddComment addComment={this.addComment} {...props} />
+            } />
           </Switch>
         </div> 
       </div>
@@ -89,10 +96,11 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ categories, posts, sort }) {
+function mapStateToProps({ categories, posts, comments, sort }) {
   return { 
     categories, 
-    posts: posts.sort((a,b) => comparePosts(a, b, sort))
+    posts: posts.sort((a,b) => comparePosts(a, b, sort)),
+    comments
   };
 }
 

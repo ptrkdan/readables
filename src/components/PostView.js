@@ -27,7 +27,7 @@ class ViewPost extends Component {
           <Post key={post.id} post={post} updatePostVoteCount={updatePostVoteCount} />
           <div className='comments-list'>
             <div className='row justify-content-between'>
-              <Link to='/addcomment/'>
+              <Link to={`/addcomment/${post.id}`}>
                 <div className='add-comment-btn btn col'>+Comment</div>
               </Link>
               <div className='sort-control-btn btn col-1'>Sort</div>
