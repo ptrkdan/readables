@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { deleteComment } from '../utils/ReadableAPI';
+import { removeComment } from '../actions';
+
+
 
 class Comment extends Component {
+
+  deleteComment = (e) => {
+    const { removeComment } = this.props;
+    const commentId = e.target.id;
+    deleteComment(commentId)
+      .then(removeComment(commentId));
+  };
 
   render() {
     const { comment } = this.props;
@@ -28,4 +40,10 @@ class Comment extends Component {
   }
 }
 
-export default Comment;
+function mapDispatchToProps(dispatch) {
+  return {
+    removeComment: (commentId) => dispatch(removeComment(commentId))
+  };
+}
+
+export default connect(null, mapDispatchToProps)(Comment);

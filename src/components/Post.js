@@ -54,9 +54,6 @@ class Post extends Component {
   }
 }
 
-function mapStateToProps({ posts }) {
-  return { posts };
-}
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -64,4 +61,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Post);
+export default connect(null, mapDispatchToProps)(Post);

@@ -30,6 +30,8 @@ function comments(state = [], action) {
   switch(action.type) {
     case actions.POPULATE_COMMENTS:
       return action.comments;
+    case actions.REMOVE_COMMENT:
+      return state.filter( comment => comment.id !== action.commentId );
     default:
       return state;
   }
