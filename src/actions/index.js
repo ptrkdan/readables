@@ -3,6 +3,7 @@ export const POPULATE_POSTS = 'POPULATE_POSTS';
 export const UPDATE_POST = 'UPDATE_POST';
 export const REMOVE_POST = 'REMOVE_POST';
 export const POPULATE_COMMENTS = 'POPULATE_COMMENTS';
+export const UPDATE_COMMENT = 'UPDATE_COMMENT';
 export const REMOVE_COMMENT = 'REMOVE_COMMENT';
 
 export function populateCategories(categories) {
@@ -44,6 +45,13 @@ export function removeComment(commentId) {
   return {
     type: REMOVE_COMMENT,
     commentId
+  };
+}
+
+export function updateComment(comment) {
+  return {
+    type: UPDATE_COMMENT,
+    comment
   };
 }
 

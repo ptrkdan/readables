@@ -3,16 +3,19 @@ import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { populateCategories,
          populatePosts,
-         updatePost
+         updatePost,
+         updateComment
        } from '../actions';
 import { fetchCategories, 
          fetchPosts,
          fetchPost,
+         fetchComment,
          addPost, 
          editPost, 
          updatePostVoteCount,
          addComment,
-         editComment
+         editComment,
+         updateCommentVoteCount
        } from '../utils/ReadableAPI';
 import { comparePosts } from '../utils/compareUtils';
 import MainView from './MainView';
@@ -40,6 +43,11 @@ class App extends Component {
       .then( post => updatePostFunc(post));
   };
 
+  fetchComment = (updateCommentFunc, commentId) => {
+    fetchComment(commentId)
+      .then( comment => updateCommentFunc(comment));
+  }
+
   componentDidMount() {
     const { populateCategories, populatePosts } = this.props;
     this.fetchCategories(populateCategories);
@@ -64,13 +72,19 @@ class App extends Component {
     this.fetchPost(updatePost, id);
   };
 
+  updateCommentVoteCount = (id, vote) => {
+    const { updateComment } = this.props;
+    updateCommentVoteCount(id, vote);
+    this.fetchComment(updateComment, id);
+  };
+
   addComment = (data) => {
     addComment(data);
-  }
+  };
 
   editComment = (data) => {
     editComment(data);
-  }
+  };
 
   render() {
     return (
@@ -90,7 +104,10 @@ class App extends Component {
               (props) => <EditPost editPost={this.editPost} {...props} />
             } />
             <Route path='/viewPost/:postId' render={
-              (props) => <PostView updatePostVoteCount={this.updatePostVoteCount}  {...props} />
+              (props) => <PostView 
+                            updatePostVoteCount={this.updatePostVoteCount}
+                            updateCommentVoteCount={this.updateCommentVoteCount}
+                            {...props} />
             } />
             <Route path='/addComment/:postId'  render={
               (props) => <AddComment addComment={this.addComment} {...props} />
@@ -117,7 +134,8 @@ function mapDispatchToProps(dispatch) {
   return {
     populateCategories: (categories) => dispatch(populateCategories(categories)),
     populatePosts: (posts) => dispatch(populatePosts(posts)),
-    updatePost: (post) => dispatch(updatePost(post))
+    updatePost: (post) => dispatch(updatePost(post)),
+    updateComment: (comment) => dispatch(updateComment(comment))
   };
 }
 

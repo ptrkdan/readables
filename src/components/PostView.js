@@ -16,7 +16,7 @@ class ViewPost extends Component {
   }
 
   render() {
-    const { posts, comments, updatePostVoteCount } = this.props;
+    const { posts, comments, updatePostVoteCount, updateCommentVoteCount } = this.props;
 
     if (posts[0]) {
       const post = posts[0];
@@ -35,7 +35,8 @@ class ViewPost extends Component {
             {
               comments.length > 0 && (
                 comments.map( comment =>
-                  <Comment key={comment.id} comment={comment} />
+                  <Comment key={comment.id} comment={comment} 
+                    updateCommentVoteCount={updateCommentVoteCount} />
                 )
               )
             }

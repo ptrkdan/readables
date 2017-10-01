@@ -17,10 +17,10 @@ function posts(state = [], action) {
     case actions.POPULATE_POSTS:
       return action.posts.filter( post => !post.deleted );
     case actions.UPDATE_POST:
-      return state.filter( post => post.id !== action.post.id)
+      return state.filter( post => post.id !== action.post.id )
         .concat(action.post);
     case actions.REMOVE_POST:
-      return state.filter( post => post.id !== action.postId);
+      return state.filter( post => post.id !== action.postId );
     default:
       return state;    
   }
@@ -30,6 +30,9 @@ function comments(state = [], action) {
   switch(action.type) {
     case actions.POPULATE_COMMENTS:
       return action.comments;
+    case actions.UPDATE_COMMENT:
+      return state.filter( comment => comment.id !== action.comment.id )
+        .concat(action.comment);
     case actions.REMOVE_COMMENT:
       return state.filter( comment => comment.id !== action.commentId );
     default:

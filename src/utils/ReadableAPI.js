@@ -98,6 +98,11 @@ fetch(`${READABLE_SERVER_URL}/posts/${postId}/comments`, { headers })
   .then( res => res.json() )
   .then( data => data );
 
+export const fetchComment = (commentId) =>
+fetch(`${READABLE_SERVER_URL}/comments/${commentId}`, { headers })
+  .then( res => res.json() )
+  .then( data => data );
+
 export const addComment = (commentData) => {
   const data = {
     ...commentData,
@@ -142,3 +147,20 @@ fetch(`${READABLE_SERVER_URL}/comments/${commentId}`,
     headers
   })
   .then( res => res );
+
+export const updateCommentVoteCount = (commentId, option) => {
+  const data = { option };
+
+  fetch(`${READABLE_SERVER_URL}/comments/${commentId}`,
+    {
+      method: 'POST',
+      headers: {
+        ...headers,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    }
+  )
+  .then( res => res );
+};
+

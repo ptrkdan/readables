@@ -15,6 +15,10 @@ class Comment extends Component {
       .then(removeComment(commentId));
   };
 
+  updateCommentVoteCount = (commentId, option) => {
+    this.props.updateCommentVoteCount(commentId, option);
+  }
+
   render() {
     const { comment } = this.props;
     const timestamp = new Date(comment.timestamp);
@@ -31,9 +35,9 @@ class Comment extends Component {
             <span className='delete-link link'> (<span onClick={this.deleteComment} id={comment.id}>Delete</span>)</span>
           </div>
           <div className='col-3'>
-            <span className='btn vote-minus-btn'>-</span>
+            <span className='btn vote-minus-btn' onClick={() => this.updateCommentVoteCount(comment.id, 'downVote')}>-</span>
             <span className='vote-count comment-vote-count'> {comment.voteScore} </span>
-            <span className='btn vote-plus-btn'>+</span>
+            <span className='btn vote-plus-btn' onClick={() => this.updateCommentVoteCount(comment.id, 'upVote')}>+</span>
           </div>
         </div>
       </div>
