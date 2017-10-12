@@ -66,7 +66,7 @@ class Comment extends Component {
           contentLabel='Confirm Delete'
           className={{ base: 'confirm-delete-modal'}}
         >
-          <h2>Are you sure you want to delete this post?</h2>
+          <h2>Are you sure you want to delete this comment?</h2>
           <ul>
             <li>
               <div className='btn' onClick={() => this.deleteComment(comment.id)}><FaCheck /></div>
