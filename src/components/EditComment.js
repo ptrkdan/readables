@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { FaLongArrowLeft } from 'react-icons/lib/fa';
 import Header from './Header';
 import serializeForm from 'form-serialize';
 
@@ -28,6 +29,9 @@ class EditComment extends Component {
       return (
         <div>
           <Header />
+          <Link to={`/viewPost/${comments[0].parentId}`}>
+            <div className='back-btn btn'><FaLongArrowLeft /></div>
+          </Link>
           <div className="add-comment">
             <form onSubmit={this.handleSubmit} id='add-comment-form'>
               <input type='hidden' name='id' value={comment.id} />

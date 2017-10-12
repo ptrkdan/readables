@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { FaLongArrowLeft } from 'react-icons/lib/fa';
 import Header from './Header';
 import serializeForm from 'form-serialize';
 
@@ -25,6 +26,9 @@ class AddComment extends Component {
     return (
       <div>
         <Header />
+        <Link to={`/viewPost/${postId}`}>
+          <div className='back-btn btn'><FaLongArrowLeft /></div>
+        </Link>
         <div className="add-comment">
           <form onSubmit={this.handleSubmit} id='add-comment-form'>
             <div className='add-comment-detail'>

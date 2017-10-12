@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { FaLongArrowLeft } from 'react-icons/lib/fa';
 import Header from './Header';
 import serializeForm from 'form-serialize';
 
@@ -34,6 +35,9 @@ class EditPost extends Component {
       return (
         <div>
           <Header />
+          <Link to='/'>
+            <div className='back-btn btn'><FaLongArrowLeft /></div>
+          </Link>
           <div className="add-post">
             <form onSubmit={this.handleSubmit} id='add-post-form'>
               <input type='hidden' name='id' value={post.id} />
