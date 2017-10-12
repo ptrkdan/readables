@@ -15,7 +15,7 @@ class CategoryView extends Component {
     return (
       <div className='category-page'>
         <Header category={category} />
-        <CategoryList />
+        <CategoryList currCategory={category} />
         <div className='category-container container'>
           <div className='row justify-content-between'>
             <Link to='/addpost/'>

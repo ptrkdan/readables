@@ -77,6 +77,19 @@ hr {
   background-color: #FFF;
 }
 
+.category-list .category:active {
+  background-color: #CCC;
+}
+
+.category-list .active {
+  background-color: #96C8EF;
+  border: 1px solid #96C8EF;
+}
+
+.category-list .active:active {
+  background-color: #96C8EF;
+}
+
 .category-list .category a div {
   width: inherit;
   height: inherit;
@@ -84,6 +97,13 @@ hr {
 
 }
 
+.sort-control-select select{
+  height: 38px;
+  margin: 0 0 20px 10px;
+  border-radius: .25rem;
+}
+
+/* Post/Comment */
 .timestamp {
   font-size: 14px;
 }
@@ -154,30 +174,48 @@ hr {
 .add-post {
   border: 1px solid #CCC;
 }
+
+.add-post ul {
+  padding: 0 40px;
+}
+
 .add-post .add-post-detail li {
   list-style: none;
   margin-top: 10px;
 }
 
 .add-post #add-post-detail-title {
+  width: 100%;
+}
+
+.add-post #add-post-detail-author {
   width: 50%;
 }
 
 .add-post #add-post-detail-body {
-  width: 50%;
+  width: 100%;
   height: 250px;
+}
+
+.add-post select {
+  border-radius: .25rem;
 }
 
 /* Add Comment Page */
 .add-comment {
   border: 1px solid #CCC;
 }
+
+.add-comment ul {
+  padding: 0 40px;
+}
+
 .add-comment .add-comment-detail li {
   list-style: none;
   margin-top: 10px;
 }
 
 .add-comment #add-comment-detail-body {
-  width: 50%;
+  width: 100%;
   height: 100px;
 }

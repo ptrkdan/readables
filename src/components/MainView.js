@@ -16,7 +16,7 @@ class MainView extends Component {
         <CategoryList />
         <div className='row justify-content-between'>
           <Link to='/addpost/'>
-            <div className='add-post-btn btn col'>+Post</div>
+            <div className='add-post-btn btn col'>+ Post</div>
           </Link>
           <SortControl />
         </div>

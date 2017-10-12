@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { FaUser,
+         FaEdit, 
+         FaTimesCircle, 
+         FaCaretUp, 
+         FaCaretDown 
+       } from 'react-icons/lib/fa/';
 import { deleteComment } from '../utils/ReadableAPI';
 import { removeComment } from '../actions';
 
@@ -30,14 +36,14 @@ class Comment extends Component {
         <div className='row justify-content-between'>
           <div className='col align-self-center'>
             <span className='timestamp comment-timestamp'>{timestamp.toLocaleString()}</span>
-            <span className='author comment-author'>by {comment.author}</span>
-            <span className='edit-link link'> (<span><Link to={`/editComment/${comment.id}`}>Edit</Link></span>)</span>
-            <span className='delete-link link'> (<span onClick={this.deleteComment} id={comment.id}>Delete</span>)</span>
+            <span className='author comment-author'><FaUser /> {comment.author}</span>
+            <span className='edit-link link'> | <FaEdit /> <span><Link to={`/editComment/${comment.id}`}>Edit</Link></span></span>
+            <span className='delete-link link'> | <FaTimesCircle /> <span onClick={this.deleteComment} id={comment.id}>Delete</span></span>
           </div>
           <div className='col-3'>
-            <span className='btn vote-minus-btn' onClick={() => this.updateCommentVoteCount(comment.id, 'downVote')}>-</span>
+            <span className='btn vote-minus-btn' onClick={() => this.updateCommentVoteCount(comment.id, 'downVote')}><FaCaretDown /></span>
             <span className='vote-count comment-vote-count'> {comment.voteScore} </span>
-            <span className='btn vote-plus-btn' onClick={() => this.updateCommentVoteCount(comment.id, 'upVote')}>+</span>
+            <span className='btn vote-plus-btn' onClick={() => this.updateCommentVoteCount(comment.id, 'upVote')}><FaCaretUp /></span>
           </div>
         </div>
       </div>

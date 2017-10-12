@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { FaUser,
+         FaCommentsO,
+         FaEdit, 
+         FaTimesCircle, 
+         FaCaretUp, 
+         FaCaretDown 
+       } from 'react-icons/lib/fa/';
 import { deletePost } from '../utils/ReadableAPI';
 import { removePost } from '../actions';
 
@@ -15,6 +22,10 @@ class Post extends Component {
 
   updatePostVoteCount = (postId, option) => {
     this.props.updatePostVoteCount(postId, option);
+  }
+
+  componentDidMount() {
+    
   }
 
   render() {
@@ -39,14 +50,15 @@ class Post extends Component {
         <div className='row justify-content-between'>
           <div className='col align-self-center'>
             <span className='timestamp post-timestamp'>{timestamp.toLocaleString()}</span>
-            <span className='author post-author'>by {post.author}</span>
-            <span className='edit-link link'> (<span><Link to={`/editPost/${post.id}`}>Edit</Link></span>)</span>
-            <span className='delete-link link'> (<span onClick={this.deletePost} id={post.id}>Delete</span>)</span>
+            <span className='author post-author'><FaUser /> {post.author}</span>
+            <span className='comment-count'> | <FaCommentsO /> 0</span>
+            <span className='edit-link link'> | <FaEdit /> <span><Link to={`/editPost/${post.id}`}>Edit</Link></span></span>
+            <span className='delete-link link'> | <FaTimesCircle /> <span onClick={this.deletePost} id={post.id}>Delete</span></span>
           </div>
           <div className='col-3'>
-            <span className='btn vote-minus-btn' onClick={() => this.updatePostVoteCount(post.id, 'downVote')}>-</span>
+            <span className='btn vote-minus-btn' onClick={() => this.updatePostVoteCount(post.id, 'downVote')}><FaCaretDown /></span>
             <span className='vote-count post-vote-count'> {post.voteScore} </span>
-            <span className='btn vote-plus-btn' onClick={() => this.updatePostVoteCount(post.id, 'upVote')}>+</span>
+            <span className='btn vote-plus-btn' onClick={() => this.updatePostVoteCount(post.id, 'upVote')}><FaCaretUp /></span>
           </div>
         </div>
       </div>
