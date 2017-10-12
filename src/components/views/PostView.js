@@ -9,7 +9,7 @@ import Post from '../components/Post';
 import Comment from '../components/Comment';
 import CommentSortControl from '../sort-controls/CommentSortControl';
 
-class ViewPost extends Component {
+class PostView extends Component {
 
   componentDidMount() {
     fetchComments(this.props.match.params.postId)
@@ -64,4 +64,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ViewPost);
+export default connect(mapStateToProps, mapDispatchToProps)(PostView);
