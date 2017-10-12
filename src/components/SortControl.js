@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import FaSort from 'react-icons/lib/fa/sort';
+import FaSortAlphaAsc from 'react-icons/lib/fa/sort-alpha-asc';
 import { setSortMethod } from '../actions/sort';
 import { SORT_BY_VOTESCORE_ASC,
          SORT_BY_VOTESCORE_DES,
@@ -18,7 +18,7 @@ class SortControl extends Component {
     const { sort } = this.props;
     return (
       <span className='col-3' style={{ textAlign: 'right' }}>
-        <FaSort />
+        <FaSortAlphaAsc />
         <span className='sort-control-select'>
           <select name='sort-control' onChange={this.onSortChange} value={sort}>
             <option key={SORT_BY_VOTESCORE_DES} value={SORT_BY_VOTESCORE_DES}>Votes, desc.</option>
