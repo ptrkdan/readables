@@ -33,8 +33,9 @@ class Comment extends Component {
         <div className='row'>
           <div className='comment-body col-12'>{comment.body}</div>
         </div>
+        <hr />
         <div className='row justify-content-between'>
-          <div className='col align-self-center'>
+          <div className='col align-self-center comment-info'>
             <span className='timestamp comment-timestamp'>{timestamp.toLocaleString()}</span>
             <span className='author comment-author'><FaUser /> {comment.author}</span>
             <span className='edit-link link'> | <FaEdit /> <span><Link to={`/editComment/${comment.id}`}>Edit</Link></span></span>

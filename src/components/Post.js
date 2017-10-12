@@ -8,10 +8,14 @@ import { FaUser,
          FaCaretUp, 
          FaCaretDown 
        } from 'react-icons/lib/fa/';
-import { deletePost } from '../utils/ReadableAPI';
+import { deletePost, fetchComments } from '../utils/ReadableAPI';
 import { removePost } from '../actions';
 
 class Post extends Component {
+
+  state = {
+    commentCount: 0
+  };
 
   deletePost = (e) => {
     const { removePost } = this.props;
@@ -25,7 +29,8 @@ class Post extends Component {
   }
 
   componentDidMount() {
-    
+    fetchComments(this.props.post.id)
+      .then(comments => this.setState({ commentCount: comments.length }));
   }
 
   render() {
@@ -48,10 +53,10 @@ class Post extends Component {
         </div>
         <hr />
         <div className='row justify-content-between'>
-          <div className='col align-self-center'>
+          <div className='col align-self-center post-info'>
             <span className='timestamp post-timestamp'>{timestamp.toLocaleString()}</span>
             <span className='author post-author'><FaUser /> {post.author}</span>
-            <span className='comment-count'> | <FaCommentsO /> 0</span>
+            <span className='comment-count'> | <FaCommentsO /> {this.state.commentCount}</span>
             <span className='edit-link link'> | <FaEdit /> <span><Link to={`/editPost/${post.id}`}>Edit</Link></span></span>
             <span className='delete-link link'> | <FaTimesCircle /> <span onClick={this.deletePost} id={post.id}>Delete</span></span>
           </div>

@@ -104,13 +104,12 @@ hr {
 }
 
 /* Post/Comment */
-.timestamp {
+.post .post-info {
   font-size: 14px;
 }
 
 .author {
   padding-left: 20px;
-  font-size: 14px;
 }
 
 .link span {
@@ -149,6 +148,10 @@ hr {
 
 .post-body {
   font-size: 16px;
+}
+
+.comment .comment-info {
+  font-size: 14px;
 }
 
 .comments-list {
