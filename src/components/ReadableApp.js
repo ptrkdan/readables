@@ -18,13 +18,13 @@ import { fetchCategories,
          updateCommentVoteCount
        } from '../utils/ReadableAPI';
 import { comparePosts, compareComments } from '../utils/compareUtils';
-import MainView from './MainView';
-import CategoryView from './CategoryView';
-import AddPost from './AddPost';
-import EditPost from './EditPost';
-import PostView from './PostView';
-import AddComment from './AddComment';
-import EditComment from './EditComment';
+import MainView from './views/MainView';
+import CategoryView from './views/CategoryView';
+import AddPostView from './views/AddPostView';
+import EditPostView from './views/EditPostView';
+import PostView from './views/PostView';
+import AddCommentView from './views/AddCommentView';
+import EditCommentView from './views/EditCommentView';
 
 class App extends Component {
 
@@ -98,10 +98,10 @@ class App extends Component {
               (props) => <CategoryView updatePostVoteCount={this.updatePostVoteCount} {...props} />
             } />
             <Route path='/addPost' render={ 
-              (props) => <AddPost addPost={this.addPost} {...props} />
+              (props) => <AddPostView addPost={this.addPost} {...props} />
             } />
             <Route path='/editPost/:postId' render={
-              (props) => <EditPost editPost={this.editPost} {...props} />
+              (props) => <EditPostView editPost={this.editPost} {...props} />
             } />
             <Route path='/viewPost/:postId' render={
               (props) => <PostView 
@@ -110,10 +110,10 @@ class App extends Component {
                             {...props} />
             } />
             <Route path='/addComment/:postId'  render={
-              (props) => <AddComment addComment={this.addComment} {...props} />
+              (props) => <AddCommentView addComment={this.addComment} {...props} />
             } />
             <Route path='/editComment/:commentId' render={
-              (props) => <EditComment editComment={this.editComment} {...props} />
+              (props) => <EditCommentView editComment={this.editComment} {...props} />
             } />
           </Switch>
         </div> 

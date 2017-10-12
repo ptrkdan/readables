@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { FaLongArrowLeft } from 'react-icons/lib/fa';
-import Header from './Header';
+import Header from '../components/Header';
 import serializeForm from 'form-serialize';
 
-class EditComment extends Component {
+class EditCommentView extends Component {
 
   state = {
     submitSuccess: false
@@ -65,4 +65,4 @@ function mapStateToProps({ comments }, ownProps) {
   };
 }
 
-export default connect(mapStateToProps)(EditComment);
+export default connect(mapStateToProps)(EditCommentView);

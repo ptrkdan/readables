@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchComments } from '../utils/ReadableAPI';
-import { populateComments } from '../actions';
-import Header from './Header';
-import CategoryList from './CategoryList';
-import CommentSortControl from './CommentSortControl';
-import Post from './Post';
-import Comment from './Comment';
+import { fetchComments } from '../../utils/ReadableAPI';
+import { populateComments } from '../../actions';
+import Header from '../components/Header';
+import CategoryList from '../components/CategoryList';
+import Post from '../components/Post';
+import Comment from '../components/Comment';
+import CommentSortControl from '../sort-controls/CommentSortControl';
 
 class ViewPost extends Component {
 

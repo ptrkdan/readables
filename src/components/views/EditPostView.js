@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { FaLongArrowLeft } from 'react-icons/lib/fa';
-import Header from './Header';
+import Header from '../components/Header';
 import serializeForm from 'form-serialize';
 
-class AddPost extends Component {
+class EditPostView extends Component {
 
   constructor(props) {
     super(props);
@@ -15,21 +15,23 @@ class AddPost extends Component {
 
   state = {
     submitSuccess: false
-  }
+  };
 
   handleSubmit(event) {
     event.preventDefault();
     const data = serializeForm(event.target, {hash: true});
-    this.props.addPost(data);
+    this.props.editPost(data);
     this.setState({ submitSuccess: true });
   }
 
   render() {
-    const { categories } = this.props;
+    const { posts } = this.props;
 
     if (this.state.submitSuccess) {
-      return <Redirect push to="/" />
-    } else {
+      return <Redirect push to={`/viewPost/${posts[0].id}`} />
+    } 
+    else if (posts[0]) {
+      const post = posts[0];
       return (
         <div>
           <Header />
@@ -38,29 +40,20 @@ class AddPost extends Component {
           </Link>
           <div className="add-post">
             <form onSubmit={this.handleSubmit} id='add-post-form'>
+              <input type='hidden' name='id' value={post.id} />
               <div className='add-post-detail'>
                 <ul>
                   <li>
-                    <h3>Title: <input id='add-post-detail-title' type='text' name='title' /></h3>
+                    <h3>Title: <input id='add-post-detail-title' type='text' name='title' defaultValue={post.title}/></h3>
                   </li>
                   <li>
-                    <span><h4>Author: <input id='add-post-detail-author' type='text' name='author' /></h4></span>
+                    <span><h4>Author: <input id='add-post-detail-author' type='text' name='author' defaultValue={post.author} /></h4></span>
                   </li>
                   <li>
-                    <textarea id='add-post-detail-body' type='text' name='body' defaultValue='Type post here.' />
+                    <textarea id='add-post-detail-body' type='text' name='body' defaultValue={post.body} />
                   </li>
                   <li>
-                    Category: <select name='category' form='add-post-form'>
-                    {
-                      categories.length > 0 && 
-                        categories.map( category => (
-                          <option key={category.name} value={category.name}>{category.name}</option>
-                        ))
-                    }
-                    </select>
-                  </li>
-                  <li>
-                    <button className='btn'>Post</button>
+                    <button className='btn'>Edit</button>
                   </li>
                 </ul>
               </div>
@@ -68,12 +61,17 @@ class AddPost extends Component {
           </div>
         </div>
       );
+    } else {
+      return <div></div>;
     }
   }
 }
 
-function mapStateToProps({ categories }) {
-  return { categories };
+function mapStateToProps({ posts }, ownProps) {
+  const { postId } = ownProps.match.params;
+  return {
+      posts: posts.filter( post => post.id === postId )
+  };
 }
 
-export default connect(mapStateToProps)(AddPost);
+export default connect(mapStateToProps)(EditPostView);

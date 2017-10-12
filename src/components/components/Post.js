@@ -11,8 +11,8 @@ import { FaUser,
          FaCheck,
          FaClose
        } from 'react-icons/lib/fa/';
-import { deletePost, fetchComments } from '../utils/ReadableAPI';
-import { removePost } from '../actions';
+import { deletePost, fetchComments } from '../../utils/ReadableAPI';
+import { removePost } from '../../actions';
 
 class Post extends Component {
 

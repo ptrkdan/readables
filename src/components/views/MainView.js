@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Header from './Header';
-import CategoryList from './CategoryList';
-import PostSortControl from './PostSortControl';
-import Post from './Post';
+import Header from '../components/Header';
+import CategoryList from '../components/CategoryList';
+import Post from '../components/Post';
+import PostSortControl from '../sort-controls/PostSortControl';
 
 class MainView extends Component {
 

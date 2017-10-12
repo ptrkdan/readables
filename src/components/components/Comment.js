@@ -10,8 +10,8 @@ import { FaUser,
          FaCheck,
          FaClose
        } from 'react-icons/lib/fa/';
-import { deleteComment } from '../utils/ReadableAPI';
-import { removeComment } from '../actions';
+import { deleteComment } from '../../utils/ReadableAPI';
+import { removeComment } from '../../actions';
 
 
 

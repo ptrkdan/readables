@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { FaLongArrowLeft } from 'react-icons/lib/fa';
-import Header from './Header';
+import Header from '../components/Header';
 import serializeForm from 'form-serialize';
 
-class AddComment extends Component {
+class AddCommentView extends Component {
 
   state = {
     submitSuccess: false
@@ -53,4 +53,4 @@ class AddComment extends Component {
   }
 }
 
-export default AddComment;
+export default AddCommentView;
