@@ -46,22 +46,22 @@ class Post extends Component {
   }
 
   render() {
-    const { post } = this.props;
+    const { post, isPreview } = this.props;
     const timestamp = new Date(post.timestamp);
     return (
       <div className='post'>
         <div className='row'>
           <div className='post-category col'>
-            >> <Link to={ `/category/${post.category}` }>{post.category}</Link>
+            >> <Link to={ `/${post.category}` }>{post.category}</Link>
           </div>
         </div>
         <div className='row justify-content-between'>
           <div className='post-title col'>
-            <Link to={`/viewPost/${post.id}`}>{post.title}</Link>
+            <Link to={`/${post.category}/${post.id}`}>{post.title}</Link>
           </div>
         </div>
         <div className='row'>
-          <div className='post-body col'>{post.body}</div>
+          <div className='post-body col'>{ isPreview? null : post.body }</div>
         </div>
         <hr />
         <div className='row justify-content-between'>

@@ -9,7 +9,7 @@ import PostSortControl from '../sort-controls/PostSortControl';
 class CategoryView extends Component {
 
   render() {
-    const category = this.props.match.params.categoryName;
+    const category = this.props.match.params.category;
     const { posts, updatePostVoteCount } = this.props;
 
     return (
@@ -18,7 +18,7 @@ class CategoryView extends Component {
         <CategoryList currCategory={category} />
         <div className='category-container container'>
           <div className='row justify-content-between'>
-            <Link to='/addpost/'>
+            <Link to={`/${category}/addpost/`}>
               <div className='add-post-btn btn col'>
                 +Post
               </div>
@@ -29,7 +29,7 @@ class CategoryView extends Component {
             {
               posts.length > 0 && (
                 posts.map( post => 
-                  <Post key={post.id} post={post} updatePostVoteCount={updatePostVoteCount} />
+                  <Post key={post.id} post={post} isPreview={true} updatePostVoteCount={updatePostVoteCount} />
                 )
               )
             }
@@ -41,7 +41,7 @@ class CategoryView extends Component {
 }
 
 function mapStateToProps({ posts }, ownProps) {
-  const category = ownProps.match.params.categoryName;
+  const category = ownProps.match.params.category;
   return { 
     posts: posts.filter( post => post.category === category )
   };

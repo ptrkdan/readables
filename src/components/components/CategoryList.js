@@ -13,7 +13,7 @@ class CategoryList extends Component {
           categories.length > 0 && (
             categories.map( category => 
               <li key={category.name} className={'category col-3' + (category.name === currCategory? ' active' : '')}>
-                <Link to={`/category/${category.path}`}>
+                <Link to={`/${category.path}`}>
                   <div>{category.name}</div>
                 </Link>
               </li>     

@@ -15,7 +15,7 @@ class MainView extends Component {
         <Header />
         <CategoryList />
         <div className='row justify-content-between'>
-          <Link to='/addpost/'>
+          <Link to='/react/addpost/'>
             <div className='add-post-btn btn col'>+ Post</div>
           </Link>
           <PostSortControl />
@@ -24,7 +24,7 @@ class MainView extends Component {
         {
           posts.length > 0 && (
             posts.map( post => 
-              <Post key={post.id} post={post} updatePostVoteCount={updatePostVoteCount} />
+              <Post key={post.id} post={post} isPreview={true} updatePostVoteCount={updatePostVoteCount} />
             )
           )
         }

@@ -94,16 +94,16 @@ class App extends Component {
             <Route exact path='/' render={
               (props) => <MainView updatePostVoteCount={this.updatePostVoteCount} {...props} />
             } />
-            <Route exact path='/category/:categoryName' render={
+            <Route exact path='/:category' render={
               (props) => <CategoryView updatePostVoteCount={this.updatePostVoteCount} {...props} />
             } />
-            <Route path='/addPost' render={ 
+            <Route exact path='/:category/addpost/' render={ 
               (props) => <AddPostView addPost={this.addPost} {...props} />
             } />
             <Route path='/editPost/:postId' render={
               (props) => <EditPostView editPost={this.editPost} {...props} />
             } />
-            <Route path='/viewPost/:postId' render={
+            <Route path='/:category/:postId' render={
               (props) => <PostView 
                             updatePostVoteCount={this.updatePostVoteCount}
                             updateCommentVoteCount={this.updateCommentVoteCount}

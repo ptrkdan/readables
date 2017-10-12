@@ -26,6 +26,7 @@ class AddPostView extends Component {
 
   render() {
     const { categories } = this.props;
+    const { category } = this.props.match.params;
 
     if (this.state.submitSuccess) {
       return <Redirect push to="/" />
@@ -50,7 +51,7 @@ class AddPostView extends Component {
                     <textarea id='add-post-detail-body' type='text' name='body' defaultValue='Type post here.' />
                   </li>
                   <li>
-                    Category: <select name='category' form='add-post-form'>
+                    Category: <select name='category' form='add-post-form' defaultValue={category}>
                     {
                       categories.length > 0 && 
                         categories.map( category => (
