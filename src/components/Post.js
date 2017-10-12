@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Modal from 'react-modal';
 import { FaUser,
          FaCommentsO,
          FaEdit, 
          FaTimesCircle, 
          FaCaretUp, 
-         FaCaretDown 
+         FaCaretDown,
+         FaCheck,
+         FaClose
        } from 'react-icons/lib/fa/';
 import { deletePost, fetchComments } from '../utils/ReadableAPI';
 import { removePost } from '../actions';
@@ -14,18 +17,27 @@ import { removePost } from '../actions';
 class Post extends Component {
 
   state = {
-    commentCount: 0
+    commentCount: 0,
+    isConfirmModalOpen: false
   };
 
-  deletePost = (e) => {
+  deletePost = (postId) => {
     const { removePost } = this.props;
-    const postId = e.target.id;
+    this.closeConfirmModal();
     deletePost(postId)
       .then(removePost(postId));
   };
 
   updatePostVoteCount = (postId, option) => {
     this.props.updatePostVoteCount(postId, option);
+  };
+
+  openConfirmModal = () => {
+    this.setState({ isConfirmModalOpen: true });
+  };
+
+  closeConfirmModal = () => {
+    this.setState({ isConfirmModalOpen: false });
   }
 
   componentDidMount() {
@@ -58,14 +70,29 @@ class Post extends Component {
             <span className='author post-author'><FaUser /> {post.author}</span>
             <span className='comment-count'> | <FaCommentsO /> {this.state.commentCount}</span>
             <span className='edit-link link'> | <FaEdit /> <span><Link to={`/editPost/${post.id}`}>Edit</Link></span></span>
-            <span className='delete-link link'> | <FaTimesCircle /> <span onClick={this.deletePost} id={post.id}>Delete</span></span>
+            <span className='delete-link link'> | <FaTimesCircle /> <span onClick={this.openConfirmModal}>Delete</span></span>
           </div>
-          <div className='col-3'>
+          <div className='col-2'>
             <span className='btn vote-minus-btn' onClick={() => this.updatePostVoteCount(post.id, 'downVote')}><FaCaretDown /></span>
             <span className='vote-count post-vote-count'> {post.voteScore} </span>
             <span className='btn vote-plus-btn' onClick={() => this.updatePostVoteCount(post.id, 'upVote')}><FaCaretUp /></span>
           </div>
         </div>
+        <Modal
+          isOpen={this.state.isConfirmModalOpen}
+          contentLabel='Confirm Delete'
+          className={{ base: 'confirm-delete-modal'}}
+        >
+          <h2>Are you sure you want to delete this post?</h2>
+          <ul>
+            <li>
+              <div className='btn' onClick={() => this.deletePost(post.id)}><FaCheck /></div>
+            </li>
+            <li>
+              <div className='btn' onClick={this.closeConfirmModal}><FaClose /></div>
+            </li>
+          </ul>
+        </Modal>
       </div>
     );
   }
