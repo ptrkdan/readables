@@ -5,7 +5,7 @@ import { fetchComments } from '../utils/ReadableAPI';
 import { populateComments } from '../actions';
 import Header from './Header';
 import CategoryList from './CategoryList';
-import SortControl from './SortControl';
+import CommentSortControl from './CommentSortControl';
 import Post from './Post';
 import Comment from './Comment';
 
@@ -31,7 +31,7 @@ class ViewPost extends Component {
               <Link to={`/addcomment/${post.id}`}>
                 <div className='add-comment-btn btn col'>+Comment</div>
               </Link>
-              <SortControl />
+              <CommentSortControl />
             </div>
             {
               comments.length > 0 && (

@@ -125,8 +125,8 @@ class App extends Component {
 function mapStateToProps({ categories, posts, comments, sort }) {
   return { 
     categories, 
-    posts: posts.sort((a,b) => comparePosts(a, b, sort)),
-    comments: comments.sort((a,b) => compareComments(a, b, sort))
+    posts: posts.sort((a,b) => comparePosts(a, b, sort.postSortMethod)),
+    comments: comments.sort((a,b) => compareComments(a, b, sort.commentSortMethod))
   };
 }
 
