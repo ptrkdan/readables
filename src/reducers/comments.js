@@ -1,7 +1,7 @@
 import { POPULATE_COMMENTS,
          UPDATE_COMMENT,
          REMOVE_COMMENT
-       } from '../actions';
+       } from '../actions/types';
 
 export default (state = [], action) => {
   switch(action.type) {

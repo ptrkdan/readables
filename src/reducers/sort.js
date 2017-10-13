@@ -1,6 +1,6 @@
 import { SET_POST_SORT_METHOD,
          SET_COMMENT_SORT_METHOD
-       } from '../actions/sort';
+       } from '../actions/types';
 import { SORT_BY_VOTESCORE_DES } from '../utils/compareUtils';
 
 const initialSortState = {

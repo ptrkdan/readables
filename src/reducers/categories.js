@@ -1,4 +1,4 @@
-import { POPULATE_CATEGORIES } from '../actions';
+import { POPULATE_CATEGORIES } from '../actions/types';
 
 export default (state = [], action) => {
   switch(action.type) {

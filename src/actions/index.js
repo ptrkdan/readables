@@ -1,10 +1,11 @@
-export const POPULATE_CATEGORIES = 'POPULATE_CATEGORIES';
-export const POPULATE_POSTS = 'POPULATE_POSTS';
-export const UPDATE_POST = 'UPDATE_POST';
-export const REMOVE_POST = 'REMOVE_POST';
-export const POPULATE_COMMENTS = 'POPULATE_COMMENTS';
-export const UPDATE_COMMENT = 'UPDATE_COMMENT';
-export const REMOVE_COMMENT = 'REMOVE_COMMENT';
+import { POPULATE_CATEGORIES,
+         POPULATE_POSTS,
+         UPDATE_POST,
+         REMOVE_POST,
+         POPULATE_COMMENTS,
+         UPDATE_COMMENT,
+         REMOVE_COMMENT
+      } from './types';
 
 export function populateCategories(categories) {
   return {

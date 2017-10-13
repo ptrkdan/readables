@@ -1,5 +1,6 @@
-export const SET_POST_SORT_METHOD = 'SET_POST_SORT_METHOD';
-export const SET_COMMENT_SORT_METHOD = 'SET_COMMENT_SORT_METHOD';
+import { SET_POST_SORT_METHOD,
+         SET_COMMENT_SORT_METHOD
+       } from './types';
 
 export function setPostSortMethod(sortMethod) {
   return {

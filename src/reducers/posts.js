@@ -1,7 +1,7 @@
 import { POPULATE_POSTS,
          UPDATE_POST,
          REMOVE_POST
-       } from '../actions';
+       } from '../actions/types';
 
 export default (state = [], action) => {
   switch(action.type) {
