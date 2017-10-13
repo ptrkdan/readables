@@ -40,7 +40,7 @@ class Comment extends Component {
   }
 
   render() {
-    const { comment } = this.props;
+    const { post, comment } = this.props;
     const timestamp = new Date(comment.timestamp);
     return (
       <div className='comment'>
@@ -52,7 +52,7 @@ class Comment extends Component {
           <div className='col align-self-center comment-info'>
             <span className='timestamp comment-timestamp'>{timestamp.toLocaleString()}</span>
             <span className='author comment-author'><FaUser /> {comment.author}</span>
-            <span className='edit-link link'> | <FaEdit /> <span><Link to={`/editComment/${comment.id}`}>Edit</Link></span></span>
+            <span className='edit-link link'> | <FaEdit /> <span><Link to={`/${post.category}/${post.id}/editComment/${comment.id}`}>Edit</Link></span></span>
             <span className='delete-link link'> | <FaTimesCircle /> <span onClick={this.openConfirmModal}>Delete</span></span>
           </div>
           <div className='col-2'>

@@ -28,7 +28,7 @@ class PostView extends Component {
           <Post key={post.id} post={post} updatePostVoteCount={updatePostVoteCount} />
           <div className='comments-list'>
             <div className='row justify-content-between'>
-              <Link to={`/addcomment/${post.id}`}>
+              <Link to={`/${post.category}/${post.id}/addcomment`}>
                 <div className='add-comment-btn btn col'>+Comment</div>
               </Link>
               <CommentSortControl />
@@ -36,7 +36,7 @@ class PostView extends Component {
             {
               comments.length > 0 && (
                 comments.map( comment =>
-                  <Comment key={comment.id} comment={comment} 
+                  <Comment key={comment.id} post={post} comment={comment} 
                     updateCommentVoteCount={updateCommentVoteCount} />
                 )
               )

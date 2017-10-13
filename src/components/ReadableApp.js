@@ -97,22 +97,22 @@ class App extends Component {
             <Route exact path='/:category' render={
               (props) => <CategoryView updatePostVoteCount={this.updatePostVoteCount} {...props} />
             } />
-            <Route exact path='/:category/addpost/' render={ 
+            <Route exact path='/:category/addPost/' render={ 
               (props) => <AddPostView addPost={this.addPost} {...props} />
             } />
-            <Route path='/editPost/:postId' render={
+            <Route exact path='/editPost/:postId' render={
               (props) => <EditPostView editPost={this.editPost} {...props} />
             } />
-            <Route path='/:category/:postId' render={
+            <Route exact path='/:category/:postId' render={
               (props) => <PostView 
                             updatePostVoteCount={this.updatePostVoteCount}
                             updateCommentVoteCount={this.updateCommentVoteCount}
                             {...props} />
             } />
-            <Route path='/addComment/:postId'  render={
+            <Route exact path='/:category/:postId/addComment'  render={
               (props) => <AddCommentView addComment={this.addComment} {...props} />
             } />
-            <Route path='/editComment/:commentId' render={
+            <Route exact path='/:category/:postId/editComment/:commentId' render={
               (props) => <EditCommentView editComment={this.editComment} {...props} />
             } />
           </Switch>
